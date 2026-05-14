@@ -1,0 +1,61 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/placeholder_modal.gd" id="1_modal"]
+
+[node name="HowToPlayOverlay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+visible = false
+script = ExtResource("1_modal")
+accent_state = "safe"
+
+[node name="OverlayShade" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ModalPanel" type="PanelContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(760, 0)
+
+[node name="Content" type="VBoxContainer" parent="CenterContainer/ModalPanel"]
+theme_override_constants/separation = 16
+
+[node name="Header" type="HBoxContainer" parent="CenterContainer/ModalPanel/Content"]
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/ModalPanel/Content/Header"]
+text = "玩法说明"
+
+[node name="Spacer" type="Control" parent="CenterContainer/ModalPanel/Content/Header"]
+size_flags_horizontal = 3
+
+[node name="CloseButton" type="Button" parent="CenterContainer/ModalPanel/Content/Header"]
+text = "关闭"
+
+[node name="InstructionCard" type="PanelContainer" parent="CenterContainer/ModalPanel/Content"]
+
+[node name="InstructionBody" type="VBoxContainer" parent="CenterContainer/ModalPanel/Content/InstructionCard"]
+theme_override_constants/separation = 12
+
+[node name="LineOne" type="Label" parent="CenterContainer/ModalPanel/Content/InstructionCard/InstructionBody"]
+text = "1. 跳过危险物，同时保持输入焦点。"
+
+[node name="LineTwo" type="Label" parent="CenterContainer/ModalPanel/Content/InstructionCard/InstructionBody"]
+text = "2. 题面出现后直接输入关键词答案。"
+
+[node name="LineThree" type="Label" parent="CenterContainer/ModalPanel/Content/InstructionCard/InstructionBody"]
+text = "3. Enter 提交，Shift 跳跃。"

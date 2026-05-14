@@ -1,0 +1,84 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/settings_overlay.gd" id="1_modal"]
+
+[node name="SettingsOverlay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+visible = false
+script = ExtResource("1_modal")
+accent_state = "warning"
+
+[node name="OverlayShade" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ModalPanel" type="PanelContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(760, 0)
+
+[node name="Content" type="VBoxContainer" parent="CenterContainer/ModalPanel"]
+theme_override_constants/separation = 16
+
+[node name="Header" type="HBoxContainer" parent="CenterContainer/ModalPanel/Content"]
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/ModalPanel/Content/Header"]
+text = "设置"
+
+[node name="Spacer" type="Control" parent="CenterContainer/ModalPanel/Content/Header"]
+size_flags_horizontal = 3
+
+[node name="CloseButton" type="Button" parent="CenterContainer/ModalPanel/Content/Header"]
+text = "关闭"
+
+[node name="FieldList" type="VBoxContainer" parent="CenterContainer/ModalPanel/Content"]
+theme_override_constants/separation = 12
+
+[node name="BaseUrlRow" type="PanelContainer" parent="CenterContainer/ModalPanel/Content/FieldList"]
+
+[node name="BaseUrlContent" type="VBoxContainer" parent="CenterContainer/ModalPanel/Content/FieldList/BaseUrlRow"]
+
+[node name="BaseUrlLabel" type="Label" parent="CenterContainer/ModalPanel/Content/FieldList/BaseUrlRow/BaseUrlContent"]
+text = "Base URL"
+
+[node name="BaseUrlField" type="LineEdit" parent="CenterContainer/ModalPanel/Content/FieldList/BaseUrlRow/BaseUrlContent"]
+placeholder_text = "请输入 AI 服务 Base URL"
+
+[node name="ModelRow" type="PanelContainer" parent="CenterContainer/ModalPanel/Content/FieldList"]
+
+[node name="ModelContent" type="VBoxContainer" parent="CenterContainer/ModalPanel/Content/FieldList/ModelRow"]
+
+[node name="ModelLabel" type="Label" parent="CenterContainer/ModalPanel/Content/FieldList/ModelRow/ModelContent"]
+text = "模型名称"
+
+[node name="ModelField" type="LineEdit" parent="CenterContainer/ModalPanel/Content/FieldList/ModelRow/ModelContent"]
+placeholder_text = "请输入模型名称"
+
+[node name="ApiKeyRow" type="PanelContainer" parent="CenterContainer/ModalPanel/Content/FieldList"]
+
+[node name="ApiKeyContent" type="VBoxContainer" parent="CenterContainer/ModalPanel/Content/FieldList/ApiKeyRow"]
+
+[node name="ApiKeyLabel" type="Label" parent="CenterContainer/ModalPanel/Content/FieldList/ApiKeyRow/ApiKeyContent"]
+text = "API Key"
+
+[node name="ApiKeyField" type="LineEdit" parent="CenterContainer/ModalPanel/Content/FieldList/ApiKeyRow/ApiKeyContent"]
+placeholder_text = "请输入 API Key"
+secret = true
+
+[node name="SaveButton" type="Button" parent="CenterContainer/ModalPanel/Content"]
+text = "保存 AI 配置"

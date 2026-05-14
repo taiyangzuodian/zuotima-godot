@@ -1,0 +1,92 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/app/start_screen.gd" id="1_start"]
+[ext_resource type="PackedScene" path="res://scenes/menu/overlays/settings_overlay.tscn" id="2_settings"]
+[ext_resource type="PackedScene" path="res://scenes/menu/overlays/how_to_play_overlay.tscn" id="3_help"]
+[ext_resource type="PackedScene" path="res://scenes/menu/overlays/latest_summary_overlay.tscn" id="4_summary"]
+[ext_resource type="PackedScene" path="res://scenes/menu/overlays/history_overlay.tscn" id="5_history"]
+
+[node name="StartScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_start")
+
+[node name="PageBackground" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RootMargin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 120
+theme_override_constants/margin_top = 72
+theme_override_constants/margin_right = 120
+theme_override_constants/margin_bottom = 72
+
+[node name="MainLayout" type="VBoxContainer" parent="RootMargin"]
+theme_override_constants/separation = 24
+
+[node name="TitleCard" type="PanelContainer" parent="RootMargin/MainLayout"]
+
+[node name="TitleContent" type="VBoxContainer" parent="RootMargin/MainLayout/TitleCard"]
+theme_override_constants/separation = 10
+
+[node name="TitleLabel" type="Label" parent="RootMargin/MainLayout/TitleCard/TitleContent"]
+text = "做题马"
+
+[node name="SubtitleLabel" type="Label" parent="RootMargin/MainLayout/TitleCard/TitleContent"]
+text = "Godot 原生全页占位版"
+
+[node name="PrimaryActions" type="VBoxContainer" parent="RootMargin/MainLayout"]
+theme_override_constants/separation = 16
+
+[node name="SampleDocumentButton" type="Button" parent="RootMargin/MainLayout/PrimaryActions"]
+text = "示例文档试玩"
+
+[node name="LocalFileButton" type="Button" parent="RootMargin/MainLayout/PrimaryActions"]
+text = "本地文档导入"
+
+[node name="StartBlockedMessage" type="Label" parent="RootMargin/MainLayout/PrimaryActions"]
+visible = false
+autowrap_mode = 3
+text = ""
+
+[node name="SecondaryActions" type="GridContainer" parent="RootMargin/MainLayout"]
+columns = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 16
+
+[node name="SettingsButton" type="Button" parent="RootMargin/MainLayout/SecondaryActions"]
+text = "设置"
+
+[node name="HowToPlayButton" type="Button" parent="RootMargin/MainLayout/SecondaryActions"]
+text = "玩法说明"
+
+[node name="LatestSummaryButton" type="Button" parent="RootMargin/MainLayout/SecondaryActions"]
+text = "最近摘要"
+
+[node name="HistoryButton" type="Button" parent="RootMargin/MainLayout/SecondaryActions"]
+text = "挑战历史"
+
+[node name="SettingsOverlay" parent="." instance=ExtResource("2_settings")]
+[node name="HowToPlayOverlay" parent="." instance=ExtResource("3_help")]
+[node name="LatestSummaryOverlay" parent="." instance=ExtResource("4_summary")]
+[node name="HistoryOverlay" parent="." instance=ExtResource("5_history")]
+
+[node name="LocalFileDialog" type="FileDialog" parent="."]
+title = "选择本地文档"
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.txt ; Text files", "*.md ; Markdown files")

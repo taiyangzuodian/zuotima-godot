@@ -1,0 +1,10 @@
+.worktrees/
+.claude/settings.local.json
+.superpowers/
+.godot/
+.venv/
+reports/
+build/
+__pycache__/
+*.pyc
+.pytest_cache/

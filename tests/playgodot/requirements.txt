@@ -1,0 +1,3 @@
+playgodot
+pytest
+pytest-asyncio

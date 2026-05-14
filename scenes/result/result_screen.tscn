@@ -1,0 +1,87 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/app/result_screen.gd" id="1_result"]
+
+[node name="ResultScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_result")
+
+[node name="PageBackground" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RootMargin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 160
+theme_override_constants/margin_top = 96
+theme_override_constants/margin_right = 160
+theme_override_constants/margin_bottom = 96
+
+[node name="Layout" type="VBoxContainer" parent="RootMargin"]
+theme_override_constants/separation = 24
+
+[node name="ResultCard" type="PanelContainer" parent="RootMargin/Layout"]
+
+[node name="ResultContent" type="VBoxContainer" parent="RootMargin/Layout/ResultCard"]
+theme_override_constants/separation = 12
+
+[node name="ResultTitleLabel" type="Label" parent="RootMargin/Layout/ResultCard/ResultContent"]
+text = "挑战通关"
+
+[node name="ResultSubtitleLabel" type="Label" parent="RootMargin/Layout/ResultCard/ResultContent"]
+text = "本轮占位结果为通关状态。"
+
+[node name="StatsCard" type="PanelContainer" parent="RootMargin/Layout"]
+
+[node name="StatsContent" type="VBoxContainer" parent="RootMargin/Layout/StatsCard"]
+theme_override_constants/separation = 12
+
+[node name="AccuracyLabel" type="Label" parent="RootMargin/Layout/StatsCard/StatsContent"]
+text = "正确率：80%"
+
+[node name="QuestionCountLabel" type="Label" parent="RootMargin/Layout/StatsCard/StatsContent"]
+text = "题目数：4"
+
+[node name="DetailCard" type="PanelContainer" parent="RootMargin/Layout"]
+custom_minimum_size = Vector2(0, 220)
+
+[node name="DetailScroll" type="ScrollContainer" parent="RootMargin/Layout/DetailCard"]
+custom_minimum_size = Vector2(0, 220)
+
+[node name="DetailContent" type="VBoxContainer" parent="RootMargin/Layout/DetailCard/DetailScroll"]
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="DetailTitleLabel" type="Label" parent="RootMargin/Layout/DetailCard/DetailScroll/DetailContent"]
+text = "答题回顾"
+
+[node name="WrongItemsLabel" type="Label" parent="RootMargin/Layout/DetailCard/DetailScroll/DetailContent"]
+text = "错题：无"
+autowrap_mode = 3
+
+[node name="TimeoutItemsLabel" type="Label" parent="RootMargin/Layout/DetailCard/DetailScroll/DetailContent"]
+text = "超时：无"
+autowrap_mode = 3
+
+[node name="ActionButtons" type="HBoxContainer" parent="RootMargin/Layout"]
+theme_override_constants/separation = 16
+
+[node name="RetryButton" type="Button" parent="RootMargin/Layout/ActionButtons"]
+text = "再来一局"
+
+[node name="BackButton" type="Button" parent="RootMargin/Layout/ActionButtons"]
+text = "返回开始页"
